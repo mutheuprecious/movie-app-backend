@@ -27,3 +27,4 @@ class ApplicationController < Sinatra::Base
     movie = Movie.find(params[:id])
     movie.to_json
   end
+end

@@ -16,7 +16,6 @@ puts "🌱 Seeding spices..."
 # defined by the different paths
 
 
-# for netflix clone 
 # we would need different links for api links in our database seeding
 #may be with different tables and models for each category
 

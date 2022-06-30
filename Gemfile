@@ -1,5 +1,10 @@
 source "https://rubygems.org"
 
+
+
+# Lets us hit external API
+gem 'rest-client'
+
 # A DSL for quickly creating web applications
 # https://github.com/sinatra/sinatra
 gem "sinatra", "~> 2.1"

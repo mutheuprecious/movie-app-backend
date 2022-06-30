@@ -21,47 +21,27 @@ puts "🌱 Seeding spices..."
 
 
 # let's get all the urls that we will need 
-API_KEY = "692adbc495abd05feeb8e0d517f9aa9c"
-baseURL = "https://api.themoviedb.org/3"
-base_image_Url = "https://image.tmdb.org/t/p/original/"
-requests = {
-    fetchNetflixOriginal: "/discover/tv?api_key=#{API_KEY}&with_network=213",
-    fetchTrending: "/trending/all/week?api_key=#{API_KEY}&language=en-us",
-    fetchTopRated: "/movie/top_rated?api_key=#{API_KEY}&language=en-US&page=1",
-    fetchAction: "/discover/movie?api_key=#{API_KEY}&with_genres=28",
-    fetchComedy: "/discover/movie?api_key=#{API_KEY}&with_genres=35",
-    fetchHorror: "/discover/movie?api_key=#{API_KEY}&with_genres=27",
-    fetchRomance: "/discover/movie?api_key=#{API_KEY}&with_genres=10749",
-    fetchDocumentary: "/discover/movie?api_key=#{API_KEY}&with_genres=99",
-}
+# USER SEEDS
+users = [
+  {username: "Hermione_Granger"},
+  {username: "Jon_Snow"}
+]
 
-requests.each do |key,value|
- response=RestClient.get "#{baseURL}#{value}"
- response_hash=JSON.parse(response)
-#  binding.pry
-    results=response_hash.map do |key2,value2|
-    if(key2=="results")
-        value2
-    end
-    end
- get_data=results[1]
- get_data.each do |mov|
-    class_name_array=[NetflixOriginal,Trending,TopRated,Action,Comedy,Horror,Romance,Documentary]
-    class_name_array.map do |c|
-        if(c==Kernel.const_get(key.slice(5,16)))
-        # binding.pry
-        c.create(
-        poster_path:mov["poster_path"],
-        backdrop_path:mov["backdrop_path"],
-        overview:mov["overview"],
-        original_name:mov["original_name"],
-        name:mov["name"],
-        original_title:mov["original_title"],
-        title:mov["title"]
-        )
-        end
-    end
- end
+users.each do |u|
+  User.create(u)
+end
+
+# MOVIE SEEDS
+movies = [
+  {
+    movie_name: "Harry Potter and the Sorcerer's Stone",
+    movie_poster: "https://i.etsystatic.com/14042790/r/il/4d2bd6/1472004550/il_570xN.1472004550_8he8.jpg",
+    movie_year: "2001"
+  }
+]
+
+movies.each do |u|
+  Movie.create(u)
 end
  
 

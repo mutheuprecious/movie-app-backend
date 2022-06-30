@@ -1,12 +1,4 @@
 class Movie < ActiveRecord::Base
-    has_many :reviews
-  
-    def slug
-      # replace spaces with -
-      title.downcase.gsub(' ', '-')
+    class Movie < ActiveRecord::Base
+        has_and_belongs_to_many :users
     end
-  
-    def self.find_by_slug(slug)
-      Movie.all.find { |object| object.slug == slug }
-    end
-  end

@@ -11,32 +11,23 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 0) do
-    create_table "tvseries", force: :cascade do |t|
-        t.string "poster_path"
-        t.string "backdrop_path"
-        t.string "overview"
-        t.string "original_name"
-        t.string "name"
-        t.string "original_title"
-        t.string "title"
-      end
-      create_table "movies", force: :cascade do |t|
-        t.string "poster_path"
-        t.string "backdrop_path"
-        t.string "overview"
-        t.string "original_name"
-        t.string "name"
-        t.string "original_title"
-        t.string "title"
-      end
-      create_table "top_rateds", force: :cascade do |t|
-        t.string "poster_path"
-        t.string "backdrop_path"
-        t.string "overview"
-        t.string "original_name"
-        t.string "name"
-        t.string "original_title"
-        t.string "title"
+    create_table "movies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+        t.string "movie_name"
+        t.string "movie_poster"
+        t.string "movie_year"
+        t.datetime "created_at"
+        t.datetime "updated_at"
       end
     
-end
+      create_table "movies_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+        t.integer "user_id"
+        t.integer "movie_id"
+      end
+    
+      create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+        t.string "username"
+        t.datetime "created_at"
+        t.datetime "updated_at"
+      end
+    
+    end

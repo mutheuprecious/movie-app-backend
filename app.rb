@@ -8,7 +8,7 @@ require 'sinatra/activerecord'
 require "./models/user.rb"
 require "./models/movie.rb"
 
-ActiveRecord::Base.establish_connection adapter: 'mysql2', database: 'sinatra_db', host: 'localhost', username: 'root', password: 'Indeed@123'
+ActiveRecord::Base.establish_connection adapter: 'mysql2', database: 'sinatra_db', host: 'localhost', username: 'precious', password: 'Indeed@123'
 
 class HiSinatra < Sinatra::Base
     # Lets us read and write cookies

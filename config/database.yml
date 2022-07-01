@@ -1,14 +1,15 @@
-#   Ensure the posgresql gem is defined in your Gemfile
-#   gem 'pg'
-
-default: &default
+ default: &default
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
-  url: "postgresql://mutheu:<database_71253080>@localhost:5432/movie app>"
+  url: "postgresql://postgres:postgres@localhost:5432/database_name"
+
+test:
+  <<: *default
+  url: "postgresql://postgres:postgres@localhost:5432/test_database_name"
 
 production:
   <<: *default
